@@ -1,0 +1,33 @@
+<!doctype html>
+  <html>
+    <head>
+      <title>Pig Latin</title>
+      <script type="text/javascript">
+
+      function PigLatin(){
+        var sentence = document.getElementById('user-input').value;
+        var word_array = sentence.split(" ")
+        document.getElementById('outputDiv').innerHTML = ""
+        for (var counter = 0, wordcount = word_array.length; counter < wordcount; counter++) {
+          Piggyfy(word_array[counter]);
+        }
+      }
+
+      function Piggyfy(input){
+        var word = input
+        var first_letter = word.charAt(0);
+        var rest_of_word = word.slice(1);
+        document.getElementById('outputDiv').innerHTML = document.getElementById('outputDiv').innerHTML + " " + rest_of_word + first_letter + "ay";
+      }
+
+      </script>
+    </head>
+
+    <body>
+      Word or Sentence: <input type="text" id="user-input"><br>
+      <input type="button" value="Change to Pig Latin" id="button" onclick="PigLatin();">
+      <script src="js/scripts.js"></script>
+      <hr>
+      <div id="outputDiv"></div>
+    </body>
+  </html>

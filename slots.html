@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Slot Machine</title>
+    <script type="text/javascript" src="http://balance3e.com/random.js"></script>
+    <script type="text/javascript">
+
+      function SpinSlots()
+      {
+        var slot1, slot2, slot3;
+        slot1 = RandomOneOf(['lemon', 'cherry', 'bar', 'donut']);
+        slot2 = RandomOneOf(['lemon', 'cherry', 'bar', 'donut']);
+        slot3 = RandomOneOf(['lemon', 'cherry', 'bar', 'donut']);
+
+        var existing_credits = parseInt(document.getElementById('text-box').value);
+
+        if(existing_credits > 0){
+          document.getElementById('text-box').value = existing_credits - 1;
+        }
+
+        if( parseInt(existing_credits) == 0){
+            alert('You have no credits. Please add credits.');
+          } else if(slot1==slot2 && slot1==slot3){
+            alert('You have won.');
+            document.getElementById('text-box').value = existing_credits + 13;
+          }
+
+        document.getElementById('slot1Img').src='http://balance3e.com/Images/' + slot1 + '.jpg';
+        document.getElementById('slot2Img').src='http://balance3e.com/Images/' + slot2 + '.jpg';
+        document.getElementById('slot3Img').src='http://balance3e.com/Images/' + slot3 + '.jpg';
+      }
+
+      function AddCredits(){
+        var existing_credits = parseInt(document.getElementById('text-box').value);
+        document.getElementById('text-box').value = existing_credits + 20;
+      }
+
+    </script>
+  </head>
+
+  <body>
+    <div style="text-align:center">
+      <h1> Ben's Slot Machine</h1>
+      <p>
+        <img id="slot1Img" border=1 alt="slot image" src="http://balance3e.com/Images/cherry.jpg">
+        <img id="slot2Img" border=1 alt="slot image" src="http://balance3e.com/Images/lemon.jpg">
+        <img id="slot3Img" border=1 alt="slot image" src="http://balance3e.com/Images/bar.jpg">
+      </p>
+
+      <input type="button" value="Click to Spin" onclick="SpinSlots()";>
+      <input type="text" id="text-box" size=10 value='20'>
+      <input type="button" id="add-credits" value="Click to Add Credit"  onclick="AddCredits()">
+    </div>
+  </body>
+</html>

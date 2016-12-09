@@ -1,0 +1,34 @@
+<!doctype html>
+  <html>
+    <head>
+      <title>Roll Average</title>
+      <script type="text/javascript" src="http://balance3e.com/random.js (Links to an external site.)">
+      </script>
+      <script type="text/javascript">
+      function RollAndAverage()
+        {
+        var userRequest = parseInt(document.getElementById('user-input-number').value)
+        var numRolls = 0
+        var total = 0;
+
+        while (numRolls < userRequest) {
+          roll1 = Math.ceil(Math.random() * 6)
+          roll2 = Math.ceil(Math.random() * 6)
+          total = total + (roll1 + roll2);
+          numRolls++;
+          console.log("Rolls were " + roll1 + ", " + roll2 + " for a total of " + (roll1+roll2))
+          console.log("The total so far is " + total)
+        }
+
+        document.getElementById('outputDiv').innerHTML = 'The average of the rolls is ' + (total/userRequest);
+      }
+
+      </script>
+    </head>
+    <body>
+      Number of Rolls: <input type="text" id="user-input-number"><br>
+      <input type="button" value="Roll the Dice " onclick="RollAndAverage();">
+      <hr>
+      <div id="outputDiv"></div>
+    </body>
+  </html>
